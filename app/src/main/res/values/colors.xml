@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="redFav">#c42d53</color>
+    <color name="blueText">#5158d6</color>
+    <color name="stopButton">#00B0FF</color>
+    <color name="playButton">#58B600</color>
+    <color name="recordButton">#FF1744</color>
+</resources>
