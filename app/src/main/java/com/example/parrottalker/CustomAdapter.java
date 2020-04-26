@@ -35,6 +35,7 @@ class CustomAdapter extends ArrayAdapter<RecordObject> {
         this.list = list;
         arrEditText = new EditText[list.size()];
     }
+    // vvv
 
     public View getView(final int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = LayoutInflater.from(getContext());
