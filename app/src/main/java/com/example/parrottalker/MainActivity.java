@@ -2,6 +2,7 @@ package com.example.parrottalker;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -43,11 +44,11 @@ public class MainActivity extends AppCompatActivity implements RecordDialog.Reco
         setContentView(R.layout.activity_main);
         fav = findViewById(R.id.fab);
 
-        try {
-            Files.createDirectories(Paths.get(FILE_PATH));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //createDirectory(FILE_PATH);
+
+
+
+
 
         wordList = new ArrayList<>();
 
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements RecordDialog.Reco
                 }
             }
         }
+
+
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +115,17 @@ public class MainActivity extends AppCompatActivity implements RecordDialog.Reco
         long date = attr.creationTime().toMillis();
         Instant instant = Instant.ofEpochMilli(date);
         return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+    }
+
+    public void createDirectory(String folder) {
+        File file = new File(folder);
+        if (!file.exists()) {
+            if (file.mkdir()) {
+                System.out.println("Directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
     }
 
 }

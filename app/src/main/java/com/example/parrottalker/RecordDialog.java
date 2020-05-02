@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.parrottalker.utils.ActionButton;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -29,6 +31,8 @@ public class RecordDialog extends AppCompatDialogFragment  {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        createFolder(MainActivity.FILE_PATH);
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.new_pop_up_record, null);
@@ -126,6 +130,15 @@ public class RecordDialog extends AppCompatDialogFragment  {
     public void setState(boolean enable ,View... v){
         for(View vi : v){
             vi.setAlpha(enable ? 0.5f: 1f);
+        }
+    }
+
+    public void createFolder(String filePath){
+        File directory = new File(filePath);
+        if (!(directory.exists() && directory.isDirectory())) {
+            try {
+                Files.createDirectories(Paths.get(filePath));
+            } catch (IOException e) {}
         }
     }
 
